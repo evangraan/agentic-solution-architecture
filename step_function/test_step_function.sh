@@ -1,0 +1,4 @@
+aws stepfunctions start-execution \
+  --state-machine-arn arn:aws:states:us-east-1:000000000000:stateMachine:agentic-state-machine \
+  --input '{"request": "Please provide architectural design documentation for a read augmented AI solution based on AWS bedrock. The solution should use an API gateway that receives requests from a front-end via REST API and then analyse initiate a step function. The states of the step function should use individual lambdas for each of the following steps: 1) analyse the request, cleaning it up and turning it into a prompt for the bedrock API 2) reach out to an in-house API that supplements the request with details 3) use the bedrock API to generate a response for the request 4) validate the response and format it as per standardised expectations. The bedrock model consists of a foundation model and read-augmented knowledge base.", "loopCount": 0}' \
+  --profile localstack

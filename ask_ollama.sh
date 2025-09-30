@@ -1,0 +1,1 @@
+curl http://localhost:11434/api/generate -d "{\"model\":\"mistral\",\"prompt\":\"$1\"}" -H "Content-Type: application/json" | grep '"response":' | cut -d ':' -f6 | sed "s/\n/ /g" | sed "s/\"//g" | sed "s/,done//g"

@@ -1,0 +1,112 @@
+arch: "aarch64" # or "x86_64" for Intel
+cpus: 4
+memory: "8GiB"
+disk: "40GiB"
+firmware:
+  cpuType: "host"   # host CPU passthrough to support x86-64-v2
+images:
+  - location: "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-arm64.img"
+    arch: "aarch64"
+portForwards:
+  - guestPort: 3022
+    hostPort: 3022
+  - guestPort: 4510
+    hostPort: 4510
+  - guestPort: 4511
+    hostPort: 4511
+  - guestPort: 4512
+    hostPort: 4512
+  - guestPort: 4513
+    hostPort: 4513
+  - guestPort: 4514
+    hostPort: 4514
+  - guestPort: 4515
+    hostPort: 4515
+  - guestPort: 4516
+    hostPort: 4516
+  - guestPort: 4517
+    hostPort: 4517
+  - guestPort: 4518
+    hostPort: 4518
+  - guestPort: 4519
+    hostPort: 4519
+  - guestPort: 4520
+    hostPort: 4520
+  - guestPort: 4521
+    hostPort: 4521
+  - guestPort: 4522
+    hostPort: 4522
+  - guestPort: 4523
+    hostPort: 4523
+  - guestPort: 4524
+    hostPort: 4524
+  - guestPort: 4525
+    hostPort: 4525
+  - guestPort: 4526
+    hostPort: 4526
+  - guestPort: 4527
+    hostPort: 4527
+  - guestPort: 4528
+    hostPort: 4528
+  - guestPort: 4529
+    hostPort: 4529
+  - guestPort: 4530
+    hostPort: 4530
+  - guestPort: 4531
+    hostPort: 4531
+  - guestPort: 4532
+    hostPort: 4532
+  - guestPort: 4533
+    hostPort: 4533
+  - guestPort: 4534
+    hostPort: 4534
+  - guestPort: 4535
+    hostPort: 4535
+  - guestPort: 4536
+    hostPort: 4536
+  - guestPort: 4537
+    hostPort: 4537
+  - guestPort: 4538
+    hostPort: 4538
+  - guestPort: 4539
+    hostPort: 4539
+  - guestPort: 4540
+    hostPort: 4540
+  - guestPort: 4541
+    hostPort: 4541
+  - guestPort: 4542
+    hostPort: 4542
+  - guestPort: 4543
+    hostPort: 4543
+  - guestPort: 4544
+    hostPort: 4544
+  - guestPort: 4545
+    hostPort: 4545
+  - guestPort: 4546
+    hostPort: 4546
+  - guestPort: 4547
+    hostPort: 4547
+  - guestPort: 4548
+    hostPort: 4548
+  - guestPort: 4549
+    hostPort: 4549
+  - guestPort: 4550
+    hostPort: 4550
+  - guestPort: 4551
+    hostPort: 4551
+  - guestPort: 4552
+    hostPort: 4552
+  - guestPort: 4553
+    hostPort: 4553
+  - guestPort: 4554
+    hostPort: 4554
+  - guestPort: 4555
+    hostPort: 4555
+  - guestPort: 4556
+    hostPort: 4556
+  - guestPort: 4557
+    hostPort: 4557
+  - guestPort: 4558
+    hostPort: 4558
+  - guestPort: 4559
+    hostPort: 4559

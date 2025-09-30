@@ -1,0 +1,10 @@
+bedrock_proxy/venv
+bedrock_proxy/venv_3.13
+bedrock_proxy/__pycache__
+IaC/.terraform.lock.hcl
+IaC/.terraform
+rag/venv
+venv
+rag/__pycache__
+ai_package.zip
+.DS_Store

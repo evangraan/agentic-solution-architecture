@@ -1,0 +1,78 @@
+{
+  "Comment": "Agentic Orchestration Step Function",
+  "StartAt": "InputAnalysis",
+  "States": {
+    "InputAnalysis": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:000000000000:function:input_analysis_agent",
+      "ResultPath": "$.input_analysis",
+      "Next": "InternetEnrichment",
+      "TimeoutSeconds": 300
+    },
+    "InternetEnrichment": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:000000000000:function:internet_enrichment_agent",
+      "ResultPath": "$.internet_enrichment",
+      "Next": "Generation",
+      "TimeoutSeconds": 300
+    },
+    "Generation": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:000000000000:function:generation_agent",
+      "ResultPath": "$.generation",
+      "Next": "ResponseAnalysis",
+      "TimeoutSeconds": 300
+    },
+    "ResponseAnalysis": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:000000000000:function:response_analysis_agent",
+      "InputPath": "$.generation",
+      "ResultPath": "$.response_analysis",
+      "Next": "CheckStatus",
+      "TimeoutSeconds": 300
+    },
+    "CheckStatus": {
+        "Type": "Choice",
+        "Choices": [
+            {
+            "Variable": "$.response_analysis.status",
+            "StringMatches": "*COMPLETED*",
+            "Next": "Success"
+            },
+            {
+            "Variable": "$.response_analysis.status",
+            "StringMatches": "*INSUFFICIENT*",
+            "Next": "IncrementLoop"
+            }
+        ],
+        "Default": "Fail"
+    },
+    "IncrementLoop": {
+      "Type": "Pass",
+      "ResultPath": "$.loopCount",
+      "Parameters": {
+        "loopCount.$": "States.MathAdd($.loopCount, 1)"
+      },
+      "Next": "CheckLoopLimit"
+    },
+    "CheckLoopLimit": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.loopCount",
+          "NumericLessThan": 3,
+          "Next": "Generation"
+        }
+      ],
+      "Default": "Fail"
+    },
+    "Success": {
+      "Type": "Succeed"
+    },
+    "Fail": {
+      "Type": "Fail",
+      "Error": "MaxLoopsExceeded",
+      "Cause": "FAILED"
+    }
+  }
+}
